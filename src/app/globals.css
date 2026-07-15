@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #0f1e3d;
+  --navy-light: #1b2f57;
+  --orange: #f97316;
+  --orange-dark: #ea580c;
+}
+
+@theme inline {
+  --color-navy: var(--navy);
+  --color-navy-light: var(--navy-light);
+  --color-brand: var(--orange);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: #0f1e3d;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a, button {
+  transition: all 0.2s ease;
+}
+
+/* ===== Hero grafik animasyonu ===== */
+@keyframes cizgi-ciz {
+  0% { stroke-dashoffset: 340; }
+  55% { stroke-dashoffset: 0; }
+  85% { stroke-dashoffset: 0; opacity: 1; }
+  95% { opacity: 0; }
+  100% { stroke-dashoffset: 340; opacity: 0; }
+}
+
+@keyframes alan-dol {
+  0%, 20% { opacity: 0; }
+  55%, 85% { opacity: 1; }
+  95%, 100% { opacity: 0; }
+}
+
+@keyframes nokta-gel {
+  0%, 40% { opacity: 0; transform: scale(0); }
+  55%, 85% { opacity: 1; transform: scale(1); }
+  95%, 100% { opacity: 0; transform: scale(0); }
+}
+
+@keyframes uc-nabiz {
+  0%, 100% { r: 5; opacity: 0.9; }
+  50% { r: 9; opacity: 0.25; }
+}
+
+.grafik-cizgi {
+  stroke-dasharray: 340;
+  stroke-dashoffset: 340;
+  animation: cizgi-ciz 5s ease-in-out infinite;
+}
+
+.grafik-alan {
+  opacity: 0;
+  animation: alan-dol 5s ease-in-out infinite;
+}
+
+.grafik-nokta {
+  opacity: 0;
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: nokta-gel 5s ease-in-out infinite;
+}
+
+.grafik-uc-halka {
+  animation: uc-nabiz 1.6s ease-in-out infinite;
+}
+
+@keyframes kart-yuzer {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.hero-kart {
+  animation: kart-yuzer 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grafik-cizgi { animation: none; stroke-dashoffset: 0; }
+  .grafik-alan { animation: none; opacity: 1; }
+  .grafik-nokta { animation: none; opacity: 1; transform: scale(1); }
+  .grafik-uc-halka { animation: none; }
+  .hero-kart { animation: none; }
+}
